@@ -90,8 +90,8 @@ public class QueensWarScript : MonoBehaviour {
     {
         if (mode == 0 && solveCount != bomb.GetSolvedModuleNames().Where(a => !ignoredModules.Contains(a)).ToList().Count)
         {
+            solveQueue += bomb.GetSolvedModuleNames().Where(a => !ignoredModules.Contains(a)).ToList().Count - solveCount;
             solveCount = bomb.GetSolvedModuleNames().Where(a => !ignoredModules.Contains(a)).ToList().Count;
-            solveQueue++;
             if (solveCount == maxStages)
                 mode = 1;
         }
@@ -419,5 +419,53 @@ public class QueensWarScript : MonoBehaviour {
                 }
             }
         }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        if (!moduleSolved)
+        {
+            while (mode != 1 || solveQueue > 0 || animating) yield return true;
+            if (pressedCardOrder.Count > 0)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!pressedCardOrder.Contains(i) && counts[cardOrder[pressedCardOrder.Last()]] < counts[cardOrder[i]])
+                    {
+                        GetComponent<KMBombModule>().HandlePass();
+                        moduleSolved = true;
+                        yield break;
+                    }
+                }
+                int lastVal = -1;
+                for (int i = 0; i < pressedCardOrder.Count; i++)
+                {
+                    if (i != 0 && counts[cardOrder[pressedCardOrder[i]]] > counts[lastVal])
+                    {
+                        GetComponent<KMBombModule>().HandlePass();
+                        moduleSolved = true;
+                        yield break;
+                    }
+                    else
+                        lastVal = cardOrder[pressedCardOrder[i]];
+                }
+            }
+            for (int i = pressedCardOrder.Count; i < 4; i++)
+            {
+                int max = -1;
+                int index = -1;
+                for (int j = 0; j < 4; j++)
+                {
+                    if (!pressedCardOrder.Contains(j) && counts[cardOrder[j]] > max)
+                    {
+                        max = counts[cardOrder[j]];
+                        index = j;
+                    }
+                }
+                buttons[index].OnInteract();
+                yield return new WaitForSeconds(.1f);
+            }
+        }
+        while (!realSolve) yield return true;
     }
 }

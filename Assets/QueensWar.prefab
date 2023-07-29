@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModuleType: queensWarModule
-  ModuleDisplayName: "Queen\u2019s War"
+  ModuleDisplayName: Queen's War
   RequiresTimerVisibility: 0
 --- !u!114 &114643853251692996
 MonoBehaviour:

@@ -14,10 +14,22 @@ MonoBehaviour:
   id: queensWarModule
   title: "Queen\u2019s War"
   author: eXish
-  description: "Can you keep track of the Queen of Spades modified game of war?\n\nThis
-    module is dedicated to the wrestler Shayna Baszler.\n\nHTML: https://ktane.timwi.de/HTML/Queen%27s%20War.html\nPDF:
-    https://ktane.timwi.de/PDF/Queen%27s%20War.pdf\n\nQueen\u2019s War (queensWarModule)
-    v1.0.1\nModule and Concept by eXish\nTwitch Plays supported"
-  version: 1.0.1
+  description: 'Can you keep track of the Queen of Spades modified game of war?
+
+
+    This module is dedicated to the wrestler Shayna Baszler.
+
+
+    HTML: https://ktane.timwi.de/HTML/Queen%27s%20War.html
+
+    PDF: https://ktane.timwi.de/PDF/Queen%27s%20War.pdf
+
+
+    Queen''s War (queensWarModule) v1.0.2
+
+    Module and Concept by eXish
+
+    Twitch Plays supported'
+  version: 1.0.2
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 14f59482a961acc44af29fc7fed4ebd9, type: 3}

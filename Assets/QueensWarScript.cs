@@ -154,12 +154,6 @@ public class QueensWarScript : MonoBehaviour {
         }
     }
 
-    int Mod(int x, int m)
-    {
-        int r = x % m;
-        return r < 0 ? r + m : r;
-    }
-
     IEnumerator HandleQueue()
     {
         while (mode == 0 || solveQueue > 0)
@@ -188,11 +182,11 @@ public class QueensWarScript : MonoBehaviour {
                     generatedCards.Add(newCard);
                     if (cardIndexes.Last() % 13 == cardIndexes[cardIndexes.Count - 2] % 13)
                     {
-                        shift--;
+                        shift++;
                         int stored = counts[3];
                         counts.RemoveAt(3);
                         counts.Insert(0, stored);
-                        Debug.LogFormat("[Queen’s War #{0}] <Stage #{1}> This card matches rank with the previous, the suit count order is now: {2}, {3}, {4}, {5}", moduleId, stageCounter, suitOrder[Mod(shift, 4)], suitOrder[Mod(shift + 1, 4)], suitOrder[Mod(shift + 2, 4)], suitOrder[Mod(shift + 3, 4)]);
+                        Debug.LogFormat("[Queen’s War #{0}] <Stage #{1}> This card matches rank with the previous, the suit count order is now: {2}, {3}, {4}, {5}", moduleId, stageCounter, suitOrder[shift % 4], suitOrder[(shift + 1) % 4], suitOrder[(shift + 2) % 4], suitOrder[(shift + 3) % 4]);
                     }
                     else if (cardIndexes.Last() % 13 > cardIndexes[cardIndexes.Count - 2] % 13)
                     {

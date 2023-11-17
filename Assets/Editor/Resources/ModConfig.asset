@@ -25,11 +25,11 @@ MonoBehaviour:
     PDF: https://ktane.timwi.de/PDF/Queen%27s%20War.pdf
 
 
-    Queen''s War (queensWarModule) v1.0.3
+    Queen''s War (queensWarModule) v1.0.4
 
     Module and Concept by eXish
 
     Twitch Plays supported'
-  version: 1.0.3
+  version: 1.0.4
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 14f59482a961acc44af29fc7fed4ebd9, type: 3}
